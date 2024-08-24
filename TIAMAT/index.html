@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+
+<style>
+  model-viewer {
+      width: 100%;
+      height: 600px;
+  }
+</style>
+
+</head>
+<body>
+    <header>
+            <img src="logo.png" class="hello">
+            <nav>
+                <ul class="mainul">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#how-to-buy">How to Buy</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="EarlyBird.html" >Early Bird</a></li>
+                    <li class="whitepaper">
+                      <a href="#">WHITEPAPER <span class="arrow"><img src="down.png" alt="" style="width: 25px; margin-top:10px; margin-left: -5px;" ></span></a>
+                      <ul class="submenu">
+                        <li><a href="eng.pdf" ><img src="united-kingdom.png" alt="English"> English</a></li>
+                        <li><a href=""><img src="spain.png" alt="span">Spanish</a></li>
+                        <li><a href="arab.pdf"><img src="flag.png" alt="Arabic">Arabic</a></li>
+                      </ul>
+                  </li>
+                    
+
+                    
+                    
+
+
+
+
+                   
+                    
+              
+                    
+                </ul>
+            </nav>
+        <button><a href="#">Buy Now</a></button>
+    </header>
+
+    <div class="marquee">
+      <div class="marquee-content">
+          <span>&#11089; $TIAMAT &#11089;</span>
+          <span>&#11089; Fair Blockchain Lottery Solana Based Project &#11089;</span>
+          <span>&#11089; $TIAMAT &#11089;</span>
+      </div>
+  </div>
+  <section class="section" id="home"> 
+    
+    <div class="content" >
+         <img src="homeimg1.png" alt="homeimg">
+       <h1><span style="font-size: 45px;">UNLOCK YOUR <br>FORTUNE WITH<span style="color: #ffc400; font-size: 65px;">TIAMAT</span></span>   <br>The Future of Transparent and<br> Fair Blockchain Lotteries!</span> </h1>
+       <a href="https://x.com/Tiamatlottery?t=v0gxKu53ob9GovEoW4CpYA&s=08 "><img src="twitter (1).png" alt="" class="twitter"></a>
+          <a href="https://discord.gg/PKbNb86A"><img src="discord.png" alt="" class="twitter"></a>
+          <a href="#home"><img src="telegram.png" alt="" class="twitter"></a>
+          <a href=" https://www.facebook.com/profile.php?id=61563855153002 "><img src="facebook (1).png" alt="" class="twitter"></a>
+       
+    
+    </div>
+
+    <div class="container">
+        <h1>Presale $TIAMAT</h1>
+    
+        <div class="timer-container">
+          <div class="timer-box">
+            <h2>30</h2>
+            <span>Days</span>
+          </div>
+          <div class="timer-box">
+            <h2>11</h2>
+            <span>Hours</span>
+          </div>
+          <div class="timer-box">
+            <h2>08</h2>
+            <span>Min</span>
+          </div>
+          <div class="timer-box">
+            <h2>32</h2>
+            <span>Sec</span>
+          </div>
+        </div>
+    
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+    
+        <p style="font-size: 20px; letter-spacing: 1em; " > <b>Coming Soon</b></p>
+    
+        <div class="input-container">
+          <div class="input-box">
+            <input type="text" placeholder="Your purchased $TIAMAT = 0" readonly>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="1 $TIAMAT = $0.5" readonly>
+          </div>
+        </div>
+    
+        <div class="buttons-container">
+          <button class="button">SOL</button>
+          <button class="button">USDC</button>
+          <button class="button">USDT</button>
+          
+        </div>
+    
+        <div class="input-container">
+          <div class="input-box">
+            <input type="number" placeholder="SOL You pay:" id="ethInput">
+            <span>SOL</span>
+          </div>
+          <div class="input-box">
+            <input type="number" placeholder="$TIAMAT you receive" id="spyInput">
+            <span>TIAMAT</span>
+          </div>
+        </div>
+    
+        <div class="buttons-container">
+          <button class="button" onclick="connectWallet()">CONNECT WALLET</button>
+          <button class="button secondary-button" onclick="buyWithETH()">BUY WITH SOL</button>
+        </div>
+      </div>
+    
+    </section>  
+    
+    </div>
+<section class="section" id="HowToBuy">
+    <div class="howtobuy">
+        
+    </div>
+</section>
+
+
+<section class="About" id="about">
+<img src="abouts.png">
+
+    
+    <div class="contactone">
+        <h1 class="headingone-about">About</h1>
+        <h1 class="headingtwo-about"> <span style="color: #ffc400; font-size: 35px;"> <br>Welcome to TIAMAT</span><br>
+         <p class="aboutpp" > The Revolutionary Token designed to transform the lottery industry through blockchain technology.<br>Tiamat (TMT) is the governance and utility token 
+          of our innovative lottery platform,providing unparalleled transparency, fairness, and winning opportunities.</p>
+          
+         
+          
+
+
+        </h1>
+     </div>
+    <div class="keyfeature">
+      <h1 class="headingthree-about">Key Features of Tiamat:</h1>
+      <br>
+      <p class="paraone-about"><span style="color: #ffc400;" >Transparency:</span> All jackpot and winning transactions are publicly verifiable
+                         on the blockchain,ensuring complete transparency.
+      </p>
+      <br>
+      <p class="paraone-about1"><span style="color: #ffc400;" >Fairness: </span> With a guaranteed high number of weekly winners,90% of the jackpot
+                   amounts are returned as winnings, making the lottery system more rewarding and equitable.
+       
+      </p>
+      <br>
+ 
+      <p class="paraone-about2"><span style="color: #ffc400;" >Utility:</span> TMT is used for participating in weekly lotteries, filling jackpots, and retrieving winnings,
+       driving significant weekly trading volume and balanced market demand.
+       
+      </p>
+      <br>
+ 
+      <p class="paraone-about3"><span style="color: #ffc400;" >Innovation:</span>  Our future plans include developing our own blockchain, creating a proprietary wallet,
+       and launching an exchange platform to enhance TMT's utility and value.
+ 
+      </p>
+      <br>
+ 
+      <p class="paraone-about4"><span style="color: #ffc400;" >Security:</span> Robust security measures, including easy-to-complete Know Your Customer (KYC) and
+       Anti-Money Laundering (AML) protocols, ensure a safe and compliant environment for all users.
+ 
+      </p>
+      <br>
+ 
+      <p class="paraone-about5"><span style="color: #ffc400;" >Sustainability:</span> Operating on the Solana blockchain, Tiamat processes a large number of
+       transactions efficiently while minimizing its carbon footprint.
+       
+      </p>
+      <br>
+
+      <p class="paraone-about6">
+        Join us in revolutionizing the lottery experience with Tiamat, where transparency,
+         fairness, and innovation come together to create a truly groundbreaking platform.
+        
+        
+       </p>
+      <br>
+    </div>
+   
+
+
+
+
+</section>
+
+<section class="Roadmap" id="roadmap">
+
+    <h1 class="content3h" >Roadmap</h1>
+        <p class="content3p">Early Achievements and Milestones</p>
+
+
+    <div class="box1">  
+        
+         
+        <p class="box1p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter1:</span><br><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;">Private Sale and Market Research:</span><br>
+           Identify  potential markets and promote the currency.</p>
+          <br>
+
+      
+
+        </div>
+    
+    <div class="display">
+    <div class="box2">  
+       
+      <p class="box2p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter2:</span><br><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;"> Pre-sale, Heavy Marketing, and Community Building:</span><br> Prepare the 
+        project and highlight the potential of the cryptocurrency.</p>
+
+           
+      
+        </div>
+    </div>
+        <!-- display -->
+        
+        <div class="sub-display">
+        <div class="box3"> 
+          
+        
+   
+          <p class="box3p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter3:</span> <br><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;">Acquire Random Number Generator, International License, and Build Lottery Website:</span><BR> Obtain necessary
+            licenses and tools for creating the lottery.</p>
+            <br>
+       
+
+         
+       
+
+
+         </p>
+        </div>
+        </div>
+            <br>
+          <div class="semi-display">
+        <div class="box4">  
+ 
+        
+          <p class="box4p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter4:</span> <br><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;">ICO, Team Expansion, and Partnerships with Exchanges:</span> : <br>Acquire partnerships, expand the team, and develop user-friendly crypto and lottery solutions.</p>
+        <br>
+
+         
+        
+        </div>
+        </div>
+
+
+        <div class="semi-display1">
+          <div class="box5">  
+   
+          
+            <p class="box5p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter5:</span><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;"><br>Initiate Tiamat Wallet Development:</span><br>
+              Create a wallet with special functionalities to <br><span style="text-shadow: 2px 2px #000000;">prevent </span> fund loss.
+             </p>
+          <br>
+  
+          </div>
+          </div>
+
+          <div class="semi-display2">
+            <div class="box6">  
+              <p class="box6p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter6:</span><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;"><br>Launch Token and Lottery Website, Online and Offline Marketing:</span><br>
+                Implement effective marketing strategies with influencers and offline advertising.
+            
+            
+            <br>
+    
+             
+            </div>
+            </div>
+
+            <div class="semi-display3">
+              <div class="box7">  
+       
+              
+              <p class="box7p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter7:</span><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;"><br>Develop Tiamat Lottery App: </span><br>
+                Create apps for Apple Store and Google Play
+              </p>
+              <br>
+      
+              
+              </div>
+              </div>
+
+              <div class="semi-display4">
+                <div class="box8">  
+         
+                
+                  <p class="box8p"><span class="quarterA" style="color: #ffc400; font-size: 22px; font-weight: bold;">Quarter8:</span><span class="quarterone" style="color: #f1a500; font-size: 18px; font-weight: bold;"><BR>Construct Tiamat Exchange: </span><br>
+                    Build our own exchange to facilitate transactions and add value to our cryptocurrency.
+                  </p>
+                <br>
+        
+                 
+               
+                </div>
+                </div>
+</section>
+
+
+
+<section class="HowToBuy" id="how-to-buy">
+    <div class="content4">
+    <h1 class="content4h" >How to buy</h1>
+    <div class="sub-display"   >
+    <!-- <div class="display"> -->
+        <div class="container1">
+         <img class="container1img" src="1 (1).png">   
+        <h1 class="container1h">Connect Your Wallet:</h1>     
+        <p class="container1p">Connect your MetaMask or <span style="text-shadow: 2px 2px #000000;">other</span> 
+        wallet to this website using the 
+        widget at the top of the page. 
+        From there you can easily buy
+        $TIAMAT tokens using ETH, BNB,
+        MATIC, USDT, USDC, AVAX, BASE
+        or bank card.
+        </p>
+        </div>
+    
+        <div class="container2">  
+        <img class="container2img" src="2.png">    
+        <h1 class="container2h">Fund Your <br>Purchase:</h1>    
+        <p class="container2p">Ensure you have either ETH, BNB 
+         MATIC, AVAX, BASE, USDC or 
+         USDT in your wallet to swap for 
+         $TIAMAT.Deposit crypto into you
+         wallet if you don't.Alternatively,
+         use the Card option.
+        </p>
+        </div>
+    
+        <div class="container3">  
+        <img class="container3img" src="3.png">     
+        <h1 class="container3h">Swap Tokens For $SPY</h1>     
+        <p class="container3p">Go to the buy widget, select the 
+        amount of tokens you wish to 
+        swap for $TIAMAT, authorise the 
+        <span style="text-shadow: 2px 2px #000000;">transactions</span> in your wallet, and
+        ensure you have enough ETH,
+        BNB, MATIC, AVAX, BASE, USDC,
+        or USDT left to cover fees.
+        </p>
+        </div>
+        
+        
+    
+        </div>
+        </div> 
+        </section>
+
+        <section class="Token Contract">
+          <h1 class="headingtoken">Token Contract</h1>
+          <p class="paratoken">Use the contract information below to add <br> the TIAMAT token to your wallet</p>
+
+          <div class="semitoken" >
+            <div class="sub-cont8"  >     
+               
+              
+                <h1>Contract address</h1>
+                <p id="wallet-address"><span style="color: #ffc400;"> 3fMrJNB54DThTGYNRfyNhVdkoDKFBURkGxUJUBZdyfki</span>
+              
+                </p>
+                <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+              
+              
+              <script src="COPY.JS"> </script>
+              
+              </div>
+
+
+           
+
+          </div>
+
+
+        </section>
+
+
+        <section class="Tokenomics">
+            <div class="content5">
+            <h1 class="content4h" >Tokenomics</h1>
+            
+            <img class="chart" src="chart.png">
+
+
+
+            <div class="container4">
+            <div class="sub-cont1"  >       
+            <h1 class="sub-cont1h">Total Supply of the Token</h1>     
+            <p class="sub-cont1p">650,000,000 Tiamat Tokens <hr>
+            </p>  
+            <h1 class="sub-cont2">Token Distribution</h1>
+            <p class="sub-cont2p">• Investors: 350,000,000 tokens <br>
+              • Reserve: 250,000,000 tokens <br>
+              • Locked: 30,000,000 tokens<br>
+              • Team: 10,000,000 tokens<br>
+              • Airdrops + Special events: 10,000,000 tokens</p>
+
+            <p class="sub-cont3">Our token is a utility token with five decimals. Part of the tokens from the jackpot (10%) will be 
+              used for liquidity (up to 25%), token burn (25%), and maintenance and profit (50%).</p>
+            </div>
+          
+            
+            
+           
+
+            
+
+            
+
+            
+            
+            
+            
+            </div>    
+            </div>   
+               
+            </div>
+          </section>
+
+         
+
+    
+    
+ <section class="section" id="faq">
+  <div class="faqdiv"><h1>Frequently Asked Questions (FAQ)</h1>
+    
+
+    
+  
+  
+  </div>
+            
+
+        <ul id="accordion">
+            <li>
+                <label for="first">What is Tiamat ? <span>&#x3e;</span></label>
+                <input type="radio" name="accordion" id="first" checked>
+                <div class="content1">
+                    <span  style="text-align: left;">The Revolutionary Token designed to Transform The lottery industry through blockchain technology.
+                      Tiamat (TMT) is the governance and utility token of our innovative lottery platform, Providing unparalleled transparency, fairness, and winning opportunities.
+                    
+                    </span>
+                </div>
+            </li>
+
+            <li>
+                <label for="second">What is a presale and ICO?<span>&#x3e;</span></label>
+                <input type="radio" name="accordion" id="second">
+                <div class="content1">
+                  <span  style="text-align: left;">A presale is a private sale of tokens to early investors, usually at a discounted price.
+                     An Initial Coin Offering (ICO) is a public sale where tokens 
+                    are sold to the general public before they are listed on exchanges.
+
+                 
+                </div>
+            </li>
+
+            <li>
+                <label for="third"> How can I participate in the presale/ICO? <span>&#x3e;</span></label>
+                <input type="radio" name="accordion" id="third">
+                <div class="content1">
+                  <span  style="text-align: left;">To participate, you need to such as registering on the website, and sending funds to 
+                    a specific wallet address or connecting your wallet with Web3 interface.
+                   
+                </div>
+            </li>
+
+
+            
+            <li>
+                <label for="fourth" style="text-align: left;" >What is the price of Tiamat  tokens during the private sale/presale/ICO? <span>&#x3e;</span></label>
+                <input type="radio" name="accordion" id="fourth">
+                <div class="content1">
+                 <span style="text-align: left;"> <p> During the Private Sale , Tiamat tokens will be sold at 0.15$ 
+                    per token .During the presale, Tiamat tokens will be sold at 0.25$ per token with increase of 0.01$ 
+                    cent per day for 30 days. The price during the ICO will be  0.55$ per token.
+                  </p></span>
+        
+                </div>
+            </li>
+
+            <li>
+              <label for="fifth" >Is there a minimum or maximum investment amount? <span>&#x3e;</span></label>
+              <input type="radio" name="accordion" id="fifth">
+              <div class="content1">
+               <span style="text-align: left;"> <p> Yes, the minimum investment amount is $200 , and the maximum investment amount is .
+                How will the funds raised be used?
+                
+                
+                Investing in cryptocurrencies involves risks including market volatility, regulatory changes, and potential loss of capital. Please conduct thorough research and consider your risk tolerance before investing.
+                
+                </p></span>
+      
+              </div>
+          </li>
+
+           
+        </ul>
+
+        
+        </section>
+        
+        
+        <footer>
+          <div class="footerContainer">
+          <div class="icondiv">
+            <img src="logo.png" class="hello2">
+            <a href="https://x.com/Tiamatlottery?t=v0gxKu53ob9GovEoW4CpYA&s=08 "><img src="twitter (1).png" alt="" class="discord"></a>
+            <a href="https://discord.gg/PKbNb86A"><img src="discord.png" alt="" class="discord1"></a>
+            <a href=" https://www.facebook.com/profile.php?id=61563855153002 "><img src="facebook (1).png" alt="" class="discord2"></a>
+            <a href="#home"><img src="telegram.png" alt="" class="discord3"></a>
+              
+          </div>
+              <div class="footerNav">
+                  <ul>
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#faq">FAQ's</a></li>
+                      <li><a href="#Tokenomics">Tokenomics</a></li>
+                      <li><a href="#roadmap">RoadMap</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footerBottom">
+              <p>Copyright &copy;2024, Tiamat</p>
+          </div>
+       </footer>
+        
+        
+       
+    
+    <script src="timer.js"></script>
+    <script src="./script.js"></script>
+    
+    
+</body>
+</html>

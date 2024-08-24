@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="EarlyBird.css">
+    <script src="https://unpkg.com/@solana/web3.js@1.33.0/lib/index.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/spl-token@0.1.8/lib/index.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+</head>
+<body>
+
+
+<section class="earlybird" id="#Early Bird">
+    <h1 class="earlyh1"> Join the Tiamat Project Waiting List!</h1>
+    
+    <p class="earlyp" >Get ahead of the crowd by securing your investment at just $0.15 per Tiamat token—half the price of the upcoming presale. By joining our exclusive waiting list, you'll have the unique opportunity to purchase Tiamat tokens early and maximize your potential returns. Don't miss this chance to be part of the Tiamat revolution from the very beginning!</p>
+<div class="mainbox">
+<div class="content">
+<h1 class="hone">Waiting List:</h1>
+<br> <p class="mainboxp">- 50,000,000 Tiamat at $0.15
+</p><br><br>
+
+<h1 class="htwo">Presale:</h1>
+<br><p class="mainboxp2">- 100,000,000 Tiamat starting at $0.25, with a 10% increment every 10 days
+</p><br><br>
+
+<h1 class="hthree">Official ICO:</h1>
+<br><p class="mainboxp3">- 200,000,000 Tiamat starting at $0.50</p><br><br>
+
+<h1 class="hfour">Reserve:</h1>
+<br><p class="mainboxp4">- 250,000,000 Tiamat for exchangers and DEX supplies</p><br><br>
+
+<h1 class="hfive">Company Holdings (Locked):</h1>
+<br><p class="mainboxp5">- 30,000,000 Tiamat
+</p><br><br>
+
+<h1 class="hsix">Team:</h1>
+<br><p class="mainboxp6">- 10,000,000 Tiamat</p><br><br>
+
+<h1 class="hseven"> Airdrops & Special Events:</h1>
+<br><p class="mainboxp7">- 10,000,000 Tiamat </p>
+</div>
+<div class="sec">
+    <p style="margin-top: -90px!important; margin-left: -80px; text-align: center; width: 600px; " class="earlypara" >Special Airdrop: 100,000 Tiamat tokens exclusive for the waiting list. For more details,
+         visit our social media airdrops section.</p></div>
+    
+    
+
+</div>
+
+
+
+    
+    
+    
+<script>
+  const conversionRates = {
+      USDC: 6.66,   // 1 USDC = 6.66 TMT
+      USDT: 6.66    // 1 USDT = 6.66 TMT
+  };
+
+  let solToTMT = 0;
+
+  async function fetchSolPrice() {
+      try {
+          const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+          const data = await response.json();
+          const solPriceInUSD = data.solana.usd;
+          solToTMT = solPriceInUSD * 6.66; // assuming 1 USD = 6.66 TMT
+          console.log(`SOL price in USD: ${solPriceInUSD}, SOL price in TMT: ${solToTMT}`);
+          calculateConversion();
+      } catch (error) {
+          console.error('Error fetching Solana price:', error);
+      }
+  }
+
+  function updateCoin(type) {
+      calculateConversion();
+  }
+
+  function calculateConversion() {
+      const payingSelect = document.getElementById('token_select');
+      const amount = parseFloat(document.getElementById('quantity').value) || 0;
+      const payingCurrency = payingSelect.options[payingSelect.selectedIndex].value;
+      let rate;
+
+      if (payingCurrency === 'SOL') {
+          rate = solToTMT;
+      } else {
+          rate = conversionRates[payingCurrency];
+      }
+
+      const convertedAmount = amount * rate;
+      document.getElementById('receiving-amount').textContent = convertedAmount.toFixed(2);
+  }
+
+  // Fetch SOL price on page load
+  document.addEventListener('DOMContentLoaded', fetchSolPrice);
+</script>
+
+
+
+
+<div class="wrapper">
+  <div class="box">
+      <div class="container">
+          <div class="section">
+              <div class="title">You're paying</div>
+              <div class="input-group">
+                  <select id="token_select" onchange="updateCoin('paying')">
+                    <option value="SOL">SOL</option>
+                    <option value="USDT">USDT</option>
+                    <option value="USDC">USDC</option>
+                  </select>
+                  <input class="Input" type="number" placeholder="Amount to send" id="quantity" oninput="calculateConversion()" />
+              </div>
+          </div>
+         
+      
+          <div class="section2">
+              <div class="title">To receive</div>
+              <div class="input-group">
+                  
+                  <select class="input-select" id="receiving-select" onchange="updateCoin('receiving')" disabled>
+                      <option value="TMT" data-icon="">TMT</option>
+                  </select>
+                  <span id="receiving-amount" class="amount1">0.00</span>
+                 
+                  
+              </div>
+              <button id="connect_button" class="button-9" onclick="connectWallet()">Connect Wallet</button>
+              <button class="button-10" onclick="sendButtonClick()">Send</button>
+          </div>
+      </div>
+  </div>
+ 
+</div>
+
+<div id="walletConnectPopup" class="wallet-popup" style="display: none;">
+  <div class="popup-content">
+      <span class="close-popup" onclick="closeWalletConnectPopup()">&times;</span>
+      <h2>Connect Your Wallet</h2>
+      <button class="button-11" id="phantomButton" onclick="connectPhantomWallet()">Phantom Wallet</button> <br>
+      <button class="button-12" id="trustWalletButton" onclick="handleOtherWalletClick('trust')">Trust Wallet</button> <br>
+<button class="button-12" id="solflareWalletButton" onclick="handleOtherWalletClick('solflare')">SolFlare Wallet</button>
+
+
+  </div>
+</div>
+
+
+
+<div style="display: none;" class="status-box" id="status_box">
+  <p style="display: none;" id="status_p"><span id="status"></span></p>
+</div>
+
+<div id="transactionStatusModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="transactionStatusText"></p>
+      <div class="loader">
+        <span class="preloader-text">Waiting For Transaction For The Tiamat... Tiamat Waiting List</span>
+      </div>
+      <button id="celebrateBtn" class="celebrate-btn">CLAIM YOUR BAG</button>
+    </div>
+  </div>
+
+<script>
+  // Get the modal and close button elements
+  const modal = document.getElementById("transactionStatusModal");
+  const closeButton = document.getElementsByClassName("close")[0];
+
+  // Event listener for the close button
+  closeButton.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+
+
+<script>
+  let wallet = null;
+  const lamportsPerSol = solanaWeb3.LAMPORTS_PER_SOL;
+
+  // Define mint addresses and recipient address
+  const MINT_ADDRESSES = {
+      SOL: "So11111111111111111111111111111111111111112", // SOL mint address (for reference)
+      USDT: "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+      USDC: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" // Mainnet USDC address
+  };
+
+  const RECEIVER_ADDRESS = "F55YnYhNJadMfmi8Mbyqcr3fDHFU5i87ppPQPX29eVt9"; // Recipient address
+
+  async function connectWallet() {
+    if (typeof window.solana === 'undefined') {
+        showAlert();
+        return;
+    }
+
+    try {
+        wallet = await window.solana.connect();
+        document.getElementById("connect_button").innerText = "Connected";
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function showAlert() {
+    document.getElementById("custom_alert").style.display = "flex"; // Show alert
+}
+
+function closeAlert() {
+    document.getElementById("custom_alert").style.display = "none"; // Hide alert
+}
+
+
+let totalTmtTokens = 0; // Initialize total TMT tokens received
+
+  async function sendButtonClick() {
+  
+  const quantity = parseFloat(document.getElementById("quantity").value);
+  if (isNaN(quantity)) {
+    // Handle error: invalid quantity
+    return;
+  }
+  const selectedToken = document.getElementById("token_select").value;
+  const statusBox = document.getElementById("status_box");
+  const statusElement = document.getElementById("status_p");
+  const modal = document.getElementById("transactionStatusModal");
+  const modalText = document.getElementById("transactionStatusText");
+  const celebrateBtn = document.getElementById('celebrateBtn');
+  celebrateBtn.style.transform = 'scale(1)'; // Reset button scale
+  celebrateBtn.textContent = 'CLAIM YOUR BAG'; // Reset button text
+  celebrateBtn.className = 'celebrate-btn'; // Reset button class
+  celebrateBtn.style.display = 'none'; // Hide the congratulatory button
+  document.getElementById("connect_button").disabled = false; // Enable the Send button
+
+  // ... rest of your code ...
+
+  // Reset status before starting
+  statusElement.innerText = "";
+  modalText.innerText = "";
+  statusBox.style.display = "none"; // Hide status box initially
+
+  if (quantity > 0) {
+    statusBox.style.display = "block"; // Show status box
+    statusElement.innerText = ""; // Clear status text
+    modalText.innerText = "Waiting for Completion of Transaction to be the part of  TIAMAT WAITING LIST"; // Show processing text in modal
+    modalText.style.color = "orange";
+    modalText.style.marginTop = "30px";
+    modalText.style.fontSize = "18px";
+    modal.style.display = "block"; // Show modal
+    document.querySelector('.loader').style.display = 'block'; // Show loader
+    document.querySelector('.preloader-text').style.display = 'block'; // Show preloader text
+
+
+    try {
+      await signInTransactionAndSendMoney(RECEIVER_ADDRESS, quantity, selectedToken);
+
+      console.log('quantity:', quantity);
+    console.log('selectedToken:', selectedToken);
+    console.log('solToTMT:', solToTMT);
+    console.log('conversionRates[selectedToken]:', conversionRates[selectedToken]);
+
+    
+    let tmtAmount;
+    if (selectedToken === 'SOL') {
+      tmtAmount = quantity * solToTMT;
+    } else {
+      tmtAmount = quantity * conversionRates[selectedToken];
+    }
+
+    console.log('tmtAmount:', tmtAmount);
+
+  // Only set this message if the transaction is confirmed
+  statusElement.innerText = "Transaction successful!";
+  modalText.innerText = "Congratulations On Being Part OF THe TIAMAT WAITING LIST!";
+  statusElement.style.color = "green";
+  document.querySelector('.loader').style.display = 'none'; // Hide loader
+
+  totalTmtTokens += tmtAmount; // Update total TMT tokens received
+    modalText.innerText += `\n You received ${tmtAmount.toFixed(2)} TMT tokens!`;
+    modalText.innerText += `\n Your Total Balance: ${totalTmtTokens.toFixed(2)} TMT tokens.`;
+    document.getElementById('transactionStatusText').innerText = modalText.innerText;
+
+
+
+
+  const celebrateBtn = document.getElementById('celebrateBtn');
+  celebrateBtn.style.display = 'block'; // Show the congratulatory button
+  celebrateBtn.textContent = 'CLAIM YOUR BAG'; // Reset button text
+  celebrateBtn.className = 'celebrate-btn'; // Reset button class
+  document.getElementById("connect_button").disabled = true; // Disable the Send button
+
+    } catch (e) {
+      // Set the message if the transaction fails
+      statusElement.innerText = "Transaction failed: " + e.message;
+      modalText.innerText = "There was an error processing your transaction: " + e.message;
+      statusElement.style.color = "red";
+      document.querySelector('.loader').style.display = 'none'; // Hide loader
+    }
+  } else {
+    statusBox.style.display = "block"; // Show status box for error message
+    statusElement.innerText = "Amount must be more than 0!";
+    modal.style.display = "block"; // Show modal
+    modalText.innerText = "Please enter a valid amount.";
+  }
+}
+
+  async function signInTransactionAndSendMoney(destPubkeyStr, quantity, tokenType) {
+      const network = "https://solana-mainnet.core.chainstack.com/1a519583be27326eb31c13a110873edc"; // Mainnet endpoint
+      const connection = new solanaWeb3.Connection(network, 'confirmed');
+      const destPubkey = new solanaWeb3.PublicKey(destPubkeyStr);
+
+      try {
+          if (tokenType === "SOL") {
+              const lamports = quantity * lamportsPerSol;
+
+              const transaction = new solanaWeb3.Transaction().add(
+                  solanaWeb3.SystemProgram.transfer({
+                      fromPubkey: wallet.publicKey,
+                      toPubkey: destPubkey,
+                      lamports,
+                  })
+              );
+
+              transaction.feePayer = wallet.publicKey;
+              const { blockhash } = await connection.getLatestBlockhash();
+              transaction.recentBlockhash = blockhash;
+
+              const signedTransaction = await window.solana.signTransaction(transaction);
+              const signature = await connection.sendRawTransaction(signedTransaction.serialize(), { skipPreflight: false });
+
+              await connection.confirmTransaction(signature, 'confirmed');
+              console.log('Transaction successful with signature:', signature);
+          } else {
+              const mintPubkey = new solanaWeb3.PublicKey(MINT_ADDRESSES[tokenType]);
+              const tokenAmount = Math.floor(quantity * 10 ** 6); // Assuming 6 decimal places
+
+              const sourceTokenAccount = await splToken.Token.getAssociatedTokenAddress(
+                  splToken.ASSOCIATED_TOKEN_PROGRAM_ID,
+                  splToken.TOKEN_PROGRAM_ID,
+                  mintPubkey,
+                  wallet.publicKey
+              );
+
+              // Check if the source token account exists
+              const sourceTokenAccountInfo = await connection.getAccountInfo(sourceTokenAccount);
+              if (!sourceTokenAccountInfo) {
+                  throw new Error("Source token account does not exist.");
+              }
+
+              const destinationTokenAccount = await splToken.Token.getAssociatedTokenAddress(
+                  splToken.ASSOCIATED_TOKEN_PROGRAM_ID,
+                  splToken.TOKEN_PROGRAM_ID,
+                  mintPubkey,
+                  destPubkey
+              );
+
+              // Check if the destination token account exists, create if it doesn't
+              const destinationTokenAccountInfo = await connection.getAccountInfo(destinationTokenAccount);
+              if (!destinationTokenAccountInfo) {
+                  // Create destination token account
+                  const createAccountIx = splToken.Token.createAssociatedTokenAccountInstruction(
+                      splToken.ASSOCIATED_TOKEN_PROGRAM_ID,
+                      splToken.TOKEN_PROGRAM_ID,
+                      mintPubkey,
+                      destinationTokenAccount,
+                      destPubkey,
+                      wallet.publicKey
+                  );
+
+                  const createAccountTx = new solanaWeb3.Transaction().add(createAccountIx);
+                  createAccountTx.feePayer = wallet.publicKey;
+                  const { blockhash } = await connection.getLatestBlockhash();
+                  createAccountTx.recentBlockhash = blockhash;
+
+                  const signedCreateTx = await window.solana.signTransaction(createAccountTx);
+                  const createSignature = await connection.sendRawTransaction(signedCreateTx.serialize(), { skipPreflight: false });
+                  await connection.confirmTransaction(createSignature, 'confirmed');
+              }
+
+              // Create transfer transaction
+              const transaction = new solanaWeb3.Transaction().add(
+                  splToken.Token.createTransferInstruction(
+                      splToken.TOKEN_PROGRAM_ID,
+                      sourceTokenAccount,
+                      destinationTokenAccount,
+                      wallet.publicKey,
+                      [],
+                      tokenAmount
+                  )
+              );
+
+              transaction.feePayer = wallet.publicKey;
+              const { blockhash } = await connection.getLatestBlockhash();
+              transaction.recentBlockhash = blockhash;
+
+              const signedTransaction = await window.solana.signTransaction(transaction);
+              const signature = await connection.sendRawTransaction(signedTransaction.serialize(), { skipPreflight: false });
+
+              await connection.confirmTransaction(signature, 'confirmed');
+              console.log('Transaction successful with signature:', signature);
+          }
+      } catch (e) {
+          console.warn("Transaction failed", e);
+          throw new Error("Transaction failed: " + e.message); // Throw error to be caught in sendButtonClick
+      }
+  }
+
+  function disconnectWallet() {
+      if (wallet) {
+          wallet = null;
+          console.log("Wallet disconnected");
+          document.getElementById("connect_button").innerText = "Connect";
+      }
+  }
+
+  const celebrateBtn = document.getElementById('celebrateBtn');
+
+celebrateBtn.addEventListener('click', () => {
+  // trigger confetti
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  // button animation
+  celebrateBtn.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    celebrateBtn.style.transform = 'scale(1)';
+  }, 100);
+
+  // Change the button text and style after 5 seconds
+  setTimeout(() => {
+    celebrateBtn.textContent = 'As soon as the presale ends, We will update you on how to claim your tokem seamlessly. Make sure to stay tune to our social channels for the latest updates, Important Announcements and next steps in your TIAMAT Journey! ';
+    celebrateBtn.className = 'congratulations-btn';
+  }, 500);
+});
+
+
+
+function connectWallet() {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    walletConnectPopup.style.display = "block"; // Show wallet connect popup
+}
+
+function closeWalletConnectPopup() {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    walletConnectPopup.style.display = "none"; // Hide wallet connect popup
+}
+
+// Event listener for the connect button
+document.getElementById("connect_button").onclick = connectWallet;
+
+// When the user clicks anywhere outside of the popup, close it (if needed)
+window.onclick = function (event) {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    if (event.target == walletConnectPopup) {
+        closeWalletConnectPopup();
+    }
+};
+
+async function connectPhantomWallet() {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    walletConnectPopup.style.display = "none"; // Hide the popup
+
+    if (typeof window.solana === 'undefined') {
+        showAlert(); // Show alert if Phantom wallet is not installed
+        return;
+    }
+
+    try {
+        wallet = await window.solana.connect(); // Connect to the wallet
+        document.getElementById("connect_button").innerText = "Connected"; // Update button text
+    } catch (err) {
+        console.log(err); // Log any errors
+    }
+}
+
+// Keep your existing connectWallet and close functions
+function connectWallet() {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    walletConnectPopup.style.display = "block"; // Show wallet connect popup
+}
+
+function closeWalletConnectPopup() {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    walletConnectPopup.style.display = "none"; // Hide wallet connect popup
+}
+
+// Event listener for the connect button
+document.getElementById("connect_button").onclick = connectWallet;
+
+// When the user clicks anywhere outside of the popup, close it (if needed)
+window.onclick = function (event) {
+    const walletConnectPopup = document.getElementById("walletConnectPopup");
+    if (event.target == walletConnectPopup) {
+        closeWalletConnectPopup();
+    }
+};
+
+function handleOtherWalletClick(walletType) {
+    let button;
+
+    if (walletType === 'trust') {
+        button = document.getElementById("trustWalletButton");
+    } else if (walletType === 'solflare') {
+        button = document.getElementById("solflareWalletButton");
+    }
+
+    if (button) {
+        button.innerText = "Coming Soon"; // Change the button text
+        button.disabled = true; // Disable the button
+        button.classList.add("coming-soon-button"); // Optional: add a class for styling if needed
+    }
+}
+
+
+
+
+
+  
+
+  window.onunload = disconnectWallet;
+</script>
+<script>
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="footerContainer">
+    <div class="icondiv">
+      <img src="logo.png" class="hello2">
+      <a href="https://x.com/Tiamatlottery?t=v0gxKu53ob9GovEoW4CpYA&s=08 "><img src="twitter (1).png" alt="" class="discord"></a>
+      <a href="https://discord.gg/PKbNb86A"><img src="discord.png" alt="" class="discord1"></a>
+      <a href=" https://www.facebook.com/profile.php?id=61563855153002 "><img src="facebook (1).png" alt="" class="discord2"></a>
+      <a href="#home"><img src="telegram.png" alt="" class="discord3"></a>
+        
+    </div>
+        <div class="footerNav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#faq">FAQ's</a></li>
+                <li><a href="#Tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">RoadMap</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footerBottom">
+        <p>Copyright &copy;2024, Tiamat</p>
+    </div>
+       </footer>
+  
+</body>
+</html>
+
+
+
+
+
+
+<div id="custom_alert" class="alert" style="display: none;">
+    <span class="closebtn" onclick="closeAlert()">&times;</span>
+    <strong>Please install the Phantom wallet!</strong>
+</div>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MySite</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img width="70%" height="200px" src="./../image.png" alt="Image 1">
+                    <div class="caption">
+                        <h2>Heading 1</h2>
+                        <p>Some description text for the first slide.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img width="70%" height="200px" src="./image.png" alt="Image 2">
+                    <div class="caption">
+                        <h2>Heading 2</h2>
+                        <p>Some description text for the second slide.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img width="70%" height="200px" src="./abouts.png" alt="Image 3">
+                    <div class="caption">
+                        <h2>Heading 3</h2>
+                        <p>Some description text for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    
+
+    
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a professional company dedicated to providing exceptional services. Our team of experts is here to help you achieve your goals.</p>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Service 1</li>
+                <li>Service 2</li>
+                <li>Service 3</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us at <a href="mailto:info@example.com">info@example.com</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 MySite. All rights reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
